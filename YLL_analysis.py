@@ -21,7 +21,7 @@ for i in range(len(data)):
 deaths_female = np.array(deaths_female)
 deaths_male = np.array(deaths_male)
 
-################################ Using the WHO table from the paper
+################################ Using the WHO table from the paper (averaging two age classes to obtain expected years left to live!)
 mle = np.zeros(len(deaths_female))
 data = genfromtxt('who_table_paper.csv')
 for i in range(len(mle)-2):
@@ -50,6 +50,7 @@ for i in range(int((len(data))/2)):
     temp_male.append(data[2*i][-2])
     temp_female.append(data[2*i+1][-2])
 
+################################ averaging over two age classes to obtain years left to live for a decade + starting with people aged 30 (as was done in the manuscript by Hanlon et al. (2020))
 for i in range(len(mle)-1):
     deaths_male_null.append((temp_male[2*i+7]+temp_male[2*i+8])/2)
     deaths_female_null.append((temp_female[2*i+7]+temp_female[2*i+8])/2)
